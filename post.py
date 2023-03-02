@@ -11,8 +11,8 @@ from auth import TOKEN
 def auto_mailing():
     msg = MIMEMultipart()
     msg['Subject'] = 'Automail'
-    msg['From'] = 'vagrius1@gmail.com'
-    msg['To'] = 'a.mosca@f-one.group'
+    msg['From'] = 'sender@gmail.com'
+    msg['To'] = 'receiver@gmail.com'
     msg['Message-Id'] = make_msgid()
     msg['Date'] = formatdate(localtime=True)
 
@@ -23,6 +23,6 @@ def auto_mailing():
 
     smtpObj = smtplib.SMTP('smtp.gmail.com', 587)
     smtpObj.starttls()
-    smtpObj.login('vagrius1@gmail.com', TOKEN)
-    smtpObj.sendmail('vagrius1@gmail.com', 'a.mosca@f-one.group', msg.as_string())
+    smtpObj.login('sender@gmail.com', TOKEN)
+    smtpObj.sendmail('sender@gmail.com', 'receiver@gmail.com', msg.as_string())
     smtpObj.quit()
